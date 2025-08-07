@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El Poder de las Voluntades - Facatativá</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #2e9e91;
+      --fucsia: #c9215a;
+      --amarillo: #f3be00;
+      --rojo: #e83927;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+    }
+    .navbar {
+      background-color: var(--verde);
+    }
+    .navbar-brand, .nav-link, .navbar-toggler-icon {
+      color: white !important;
+    }
+    .hero {
+      background-color: var(--fucsia);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .section-title {
+      color: var(--verde);
+      border-bottom: 3px solid var(--amarillo);
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      color: var(--fucsia);
+    }
+    .footer {
+      background-color: var(--verde);
+      color: white;
+      padding: 2rem;
+    }
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: var(--amarillo);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+   <a class="navbar-brand d-flex align-items-center" href="#">
+ <img src="imagenes/logo.png" alt="Logo" width="40" height="40" class="me-2 rounded-circle bg-white p-1">
+  El Poder de las Voluntades
+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#quienes-somos">¿Quiénes somos?</a></li>
+        <li class="nav-item"><a class="nav-link" href="#equipo">Nuestro equipo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#propuestas">Propuestas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero fade-in">
+  <h1>¡Juntos haremos historia!</h1>
+  <p>Juventud unida por el cambio en Facatativá</p>
+</header>
+
+<section class="container text-center my-5 fade-in" id="contador-elecciones">
+  <h2 class="section-title">Faltan para las elecciones</h2>
+  <h3 id="cuenta-regresiva" class="display-5 text-danger"></h3>
+  <div id="mensaje-final" class="mt-4 text-success fw-bold" style="display: none;">
+    ¡Hoy son las elecciones! ¡Les deseamos lo mejor, el cambio comienza ahora!
+  </div>
+</section>
+
+<script>
+
+  const fechaElecciones = new Date(2025, 9, 19, 7, 0, 0); 
+  const cuenta = document.getElementById('cuenta-regresiva');
+  const mensaje = document.getElementById('mensaje-final');
+
+  const actualizarContador = () => {
+    const ahora = new Date().getTime();
+    const distancia = fechaElecciones - ahora;
+
+    if (distancia < 0) {
+      cuenta.style.display = 'none';
+      mensaje.style.display = 'block';
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    cuenta.innerText = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+  };
+
+  setInterval(actualizarContador, 1000);
+</script>
+
+
+<section id="quienes-somos" class="container my-5 fade-in">
+  <h2 class="section-title">¿Quiénes somos?</h2>
+  <p>Somos una fuerza juvenil comprometida con transformar Facatativá desde la participación, el respeto y la acción colectiva. Queremos ser el puente entre las ideas de los jóvenes y la acción institucional.</p>
+</section>
+
+<section id="equipo" class="container my-5 fade-in">
+  <h2 class="section-title">Nuestro equipo</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <!-- Integrante 1 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Samuel Eduardo Martínez</h5>
+        <p class="card-text">Activista social, ex personero estudiantil, comprometido con el desarrollo de su comunidad.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrante 2 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Karen Vanessa Cuadrado</h5>
+        <p class="card-text">Amante de la cultura y el folclor, ex contralora estudiantil, promotora del arte juvenil.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrante 3 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Kevin Santiago Arévalo</h5>
+        <p class="card-text">Líder deportivo y entrenador juvenil. Capitán de selecciones regionales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrante 4 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Kevin Santiago Arévalo</h5>
+        <p class="card-text">Líder deportivo y entrenador juvenil. Capitán de selecciones regionales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrante 5 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Kevin Santiago Arévalo</h5>
+        <p class="card-text">Líder deportivo y entrenador juvenil. Capitán de selecciones regionales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrante 6 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Kevin Santiago Arévalo</h5>
+        <p class="card-text">Líder deportivo y entrenador juvenil. Capitán de selecciones regionales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrante 7 -->
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Kevin Santiago Arévalo</h5>
+        <p class="card-text">Líder deportivo y entrenador juvenil. Capitán de selecciones regionales.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</section>
+
+<section id="propuestas" class="container my-5 fade-in">
+  <h2 class="section-title">Propuestas</h2>
+  <ul>
+    <li><strong>Educación:</strong> Formación técnica, tecnológica y humana.</li>
+    <li><strong>Empleo:</strong> Ferias juveniles, primer empleo, emprendimiento.</li>
+    <li><strong>Salud mental:</strong> Psicólogos en escuelas, cuidadores emocionales.</li>
+    <li><strong>Participación:</strong> Cabildos juveniles, escuelas de liderazgo.</li>
+    <li><strong>Cultura y deporte:</strong> Festival juvenil, recuperación de espacios.</li>
+    <li><strong>Medio ambiente:</strong> Brigadas ecológicas, huertas urbanas.</li>
+  </ul>
+</section>
+
+<section id="contacto" class="container my-5 fade-in">
+  <h2 class="section-title">Contáctanos</h2>
+  <form>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre">
+    </div>
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="correo">
+    </div>
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea class="form-control" id="mensaje" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" style="background-color: var(--fucsia); border: none;">Enviar</button>
+  </form>
+</section>
+
+<footer class="footer text-center">
+  <p>© 2025 El Poder de las Voluntades - Facatativá</p>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/profile.php?id=61578026889442" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/573001112233" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fadeElements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
